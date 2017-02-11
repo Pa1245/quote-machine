@@ -1,16 +1,39 @@
-$(document).ready(function() {
-  $('#genQuote').click(function () {
-    var randomNum = Math.floor(Math.random() * (quote.length));
-    $('#quoteDisplay').html(quote[randomNum]);
+$(document).ready(function () {
+  var quote;
+  var author;
+  function getNewQuote() {
+    $.ajax({
+      url : 'http://api.forismatic.com/api/1.0/',
+      jsonp : 'jsonp',
+      dataType : 'jsonp',
+      data : {
+        method : 'getQuote',
+        format : 'jsonp',
+        lang : 'en'
+      },
+      success : function(response) {
+        quote = response.quoteText;
+        author = response.quoteAuthor;
+        $('#quote-text').html(quote);
+        if (author) {
+          $('#quote-author').html('--' + author);
+        }
+        else {
+          $('#quote-author').html('--Anonymous');
+        }
+      }
+    });
+  }
+
+  getNewQuote();
+
+  $('#newQuote').click(function (event) {
+    event.preventDefault();
+    getNewQuote();
   });
-});
 
-
-var quote = ['We must let go of the life we have planned, so as to accept the one that is waiting for us.',
-'When you\'re surrounded by people who share a passionate commitment around a common purpose, anything is possible.',
-'Setting goals is the first step in turning the invisible into the visible.',
-'It is in your moments of decision that your destiny is shaped.',
-'Stay committed to your decisions, but stay flexible in your approach.'];
-
-
-
+  $('#twitter-share').click(function (event) {
+    event.preventDefault();
+    window.open("https://twitter.com/intent/tweet?text="+quote+" --"+author+"&hashtags=QuoteStack");
+  });
+})

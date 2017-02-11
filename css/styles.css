@@ -1,0 +1,47 @@
+
+body {
+	background-color: #e3e3e3;
+}
+
+#banner {
+	padding: 10px 0px 40px;
+	font-family: 'Lobster', cursive;
+}
+
+main {
+	background-color: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#quote-box {
+	margin-bottom: 10px;
+}
+
+.quote-symbol {
+	font-size: xx-large;
+}
+
+#quote-text {
+	padding: 10px 0 5px;
+	font-family: monospace;
+	font-weight: bolder;
+	font-size: xx-large;
+}
+
+#quote-author {
+	padding: 0 0 8px;
+	font-family: 'Pangolin', cursive;
+	font-size: large;
+}
+
+#buttons {
+	padding-bottom: 20px;
+}
+
+#newQuote {
+	background-color: #e3e3e3;
+}
+
+#twitter-share {
+	background-color: #e3e3e3;
+}
